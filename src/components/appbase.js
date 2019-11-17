@@ -52,13 +52,12 @@ class App extends React.Component {
                 return (
                     <div className="container">
                       <div className="deposit form-group">
-                        <br></br>
                         <label>[Investor] Deposit</label>
                         <input className="form-control" type="text" placeholder="Seed phrase" onChange={(e) => this.updateValue("deposit", "seed", e.target.value)}/>
-                        <small className="form-text text-muted">Please keep your seed always carefully</small>
+                        <small className="form-text text-muted">It is a demo in Waves testnet. Please keep your seed always carefully</small>
                         <input className="form-control" type="number" placeholder="WAVES - Amount" onChange={(e) => this.updateValue("deposit", "amount", e.target.value)}/>
-                        <br></br>
                         <input className="btn btn-primary" type="submit" value="Deposit" onClick={this.deposit}/>
+                        <br/>
                         <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.deposit.txid}>Transaction: {this.state.deposit.txid}</a>
                         <br/>
                       </div>
@@ -71,6 +70,7 @@ const app = document.getElementById('app');
 if(app){
     ReactDOM.render(<App/>, app);
 }
+
 
 // Product Constructor
 class Product {

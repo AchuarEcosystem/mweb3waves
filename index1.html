@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GreenCC Ecosystem</title>
+    <!-- Bootswatch Theme -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <!-- Custom CSS -->
+  <!--  <link rel="stylesheet" href="App.css">  -->
+
+  <!-- desde waves -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">GreenProjects</a>
+    </nav>
+
+  <!-- desde waves -->
+    <p>
+    <h3 class="display-5 text-center text-info">Welcome to GCC Ecosystem!</h3>
+
+    <div class="transfer-wrapper">
+    <h1>Investment</h1>
+    <div class="input-wrapper">
+      <input id="recipient" placeholder="amount" class="input-amount input">
+      <span class="amount-tokens">Bit-CO2</span>
+    </div>
+    <button id="send-transfer" class="submit" disabled="disabled">Send</button>
+    <button id="send-transfer" class="submit" disabled="disabled">Sign</button>
+    <div class="transfer-wait hide">...wait confirmation</div>
+    <div class="transfer-reject hide">Not confirmed</div>
+    <a class="transfer-ok hide" target="_blank" href="#">Show transaction</a>
+    </div>
+
+    <!--<script src="./src/app.js"></script> -->
+
+
+    <div id="app"></div>
+    <script type="text/javascript" src="./build.js"></script>
+
+<br>
+
+</body>
+
+</html>
