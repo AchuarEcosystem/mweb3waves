@@ -14,7 +14,7 @@ class App extends React.Component {
                 };
                 this.baseUri = 'https://testnodes.wavesnodes.com';
                 this.wavelet = 100000000;
-                this.dappaddress = '3N7b5RREJBhrQwb5AiKUB2upCxMSfNw4nok';
+                this.dApp = '3N7b5RREJBhrQwb5AiKUB2upCxMSfNw4nok';
                 this.explorerUrl = "https://wavesexplorer.com/testnet";
                 this.deposit = this.deposit.bind(this);
                 this.updateValue = this.updateValue.bind(this);
@@ -31,7 +31,7 @@ class App extends React.Component {
             deposit(){
               if (window.confirm("Are you sure you wish to deposit?")) {
                   const params = {
-                      dappAddress: this.dappaddress,
+                      dApp: this.dApp,
                       call: {
                           function: "deposit",
                           args:[]
@@ -47,7 +47,7 @@ class App extends React.Component {
                       (e) => { console.log(e); this.updateValue("deposit", "txid", '') });
               }
             }
-            
+
             render() {
                 return (
                     <div className="container">
