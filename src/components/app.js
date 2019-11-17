@@ -8,8 +8,7 @@ class App extends React.Component {
                 this.state = {
                     deposit: {
                       seed: '',
-                      amount: '',
-                      txid: ''
+                      amount: ''
                     }
                 };
                 this.baseUri = 'https://testnodes.wavesnodes.com';
@@ -47,7 +46,7 @@ class App extends React.Component {
                       (e) => { console.log(e); this.updateValue("deposit", "txid", '') });
               }
             }
-            
+
             render() {
                 return (
                     <div className="container">
