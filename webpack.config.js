@@ -5,7 +5,7 @@ module.exports = {
 		'./src/main.js'
 	],
 	output: {
-		filename: 'build.js'
+		filename: 'build.js' //npm run build:dev
 	},
 	module: {
 		rules: [
