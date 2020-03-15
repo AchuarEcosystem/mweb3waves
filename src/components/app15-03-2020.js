@@ -2,12 +2,60 @@ import ReactDOM from "react-dom";
 import React from 'react';
 import { invokeScript, broadcast } from '@waves/waves-transactions'
 
+/*
+class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    deposit: {
+                      seed: '',
+                      amount: '',
+                      txid: ''
+                    }
+                };
+                this.baseUri = 'https://testnodes.wavesnodes.com';
+                this.wavelet = 100000000;
+                this.dApp = '3N7b5RREJBhrQwb5AiKUB2upCxMSfNw4nok';
+                this.explorerUrl = "https://wavesexplorer.com/testnet";
+                this.deposit = this.deposit.bind(this);
+                this.updateValue = this.updateValue.bind(this);
+            }
+            updateValue(scope, key, value) {
+              const newState = this.state[scope];
+              newState[key] = value;
+              this.setState(
+                      {
+                        [scope]: newState
+                      }
+                );
+            }
+            deposit(){
+              if (window.confirm("Are you sure you wish to deposit?")) {
+                  const params = {
+                      dApp: this.dApp,
+                      call: {
+                          function: "deposit",
+                          args:[]
+                      },
+                      payment: [ {amount: this.state.deposit.amount*this.wavelet, asset:null } ],
+                      chainId: 84
+                  };
+                  console.log(this.state.deposit);
+                  console.log(params);
+                  let tx = invokeScript(params, this.state.deposit.seed);
+                  let res = broadcast(tx, this.baseUri);
+                  res.then((v) => this.updateValue("deposit", "txid", tx.id),
+                      (e) => { console.log(e); this.updateValue("deposit", "txid", '') });
+              }
+            }
+*/
+// Keeper
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             purchase: {
-                //seed: '',
+                seed: '',
                 item: '',
                 projectName: '',
                 userData: '',
@@ -50,7 +98,7 @@ class App extends React.Component {
             alert("Please, utilize WavesKeeper");
         }
     }
-/*
+
     purchase(){
         if(window.confirm("Do you want investment in GreenProjects?")) {
             const params = {
@@ -79,48 +127,7 @@ class App extends React.Component {
                 (e) => {console.log(e); this.updateValue("purchase", "txid", '')});
         }
     }
-*/
 
-purchase(){
-    if(window.confirm("Do you want investment in GreenProjects?")) {
-        const params = {
-                type: 16,
-            data: {
-                fee: {
-                    "tokens": "0.05",
-                    "assetId": "WAVES"
-                },
-                dApp: '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4',
-                call: {
-                        function: 'purchase',
-                        args: [
-                            {type:"string", value:this.state.purchase.item},
-                            {type:"string", value:this.state.purchase.projectName},
-                            {type:"string", value:this.state.purchase.userData},
-                            {type:"integer", value:this.state.purchase.userDiscount},
-                            {type:"integer", value:this.state.purchase.orderQty},
-                            {type:"integer", value:this.state.purchase.amount*this.wavelet}
-                        ]
-                    }, payment: [{amount:this.state.purchase.amount*this.wavelet, asset:null}]
-            }
-        };
-        //console.log(this.state.purchase);
-        //console.log(params);
-        window.WavesKeeper.signAndPublishTransaction(params)
-        .then(data => {
-            console.log("Ура! Я выполнил скрипт!!!");
-       }).catch((error) => {
-            console.error("Что-то пошло не так", error);
-       }); 
-        //    {
-        //let tx = invokeScript(params, this.state.purchase.seed);
-        //this.updateValue("purchase", "tx.Id", tx.Id);
-        //let res = broadcast(tx, this.baseUri);
-        //res.then((v) => this.updateValue("purchase", "txid", tx.id),
-        //    (e) => {console.log(e); this.updateValue("purchase", "txid", '')});
-    }
-}
-       
     render() {
         return (
 /*            <div className="container">
@@ -139,7 +146,9 @@ purchase(){
 
             <div className="container">
                 <div className="purchase form-group">
-
+                    <br></br>
+                    <label><h5>[ seed ]</h5></label>
+                    <input className="form-control" type="text" placeholder="Seed" onChange={(e) => this.updateValue("purchase", "seed", e.target.value)}/>
                     
                     <label><h5>[ projectName ]</h5></label>
                     <input className="form-control" type="text" placeholder="Project Name" onChange={(e) => this.updateValue("purchase", "projectName", e.target.value)}/>
