@@ -47,140 +47,73 @@ class App extends React.Component {
                 console.error(error);
             })
         } else {
-            alert("Please, utilize WavesKeeper");
-        }
-    }
-/*
-    purchase(){
+            alert("Please, utilize WavesKeeper")
+        };
+    };
+    
+    purchase() {
         if(window.confirm("Do you want investment in GreenProjects?")) {
             const params = {
-                dApp: this.dApp,
-                call: {
-                    function:"purchase",
-                    args:[
-                        {type:"string", value:this.state.purchase.item},
-                        {type:"string", value:this.state.purchase.projectName},
-                        {type:"string", value:this.state.purchase.userData},
-                        {type:"integer", value:this.state.purchase.userDiscount},
-                        {type:"integer", value:this.state.purchase.orderQty},
-                        {type:"integer", value:this.state.purchase.amount*this.wavelet}
-                        //{type:"string", value:this.state.purchase.address}
-                    ]
-                },
-                payment:[{amount:this.state.purchase.amount*this.wavelet, asset:null}],
-                chainId:84
+                    type: 16,
+                data: {
+                    fee: {
+                        "tokens": "0.05",
+                        "assetId": "WAVES"
+                    },
+                    dApp: '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4',
+                    call: {
+                            function: 'purchase',
+                            args: [
+                                {type:"string", value:this.state.purchase.item},
+                                {type:"string", value:this.state.purchase.projectName},
+                                {type:"string", value:this.state.purchase.userData},
+                                {type:"integer", value:this.state.purchase.userDiscount},
+                                {type:"integer", value:this.state.purchase.orderQty},
+                                {type:"integer", value:this.state.purchase.amount*this.wavelet}
+                            ]
+                        }, payment: [{assetId: "WAVES", amount:this.state.purchase.amount*this.wavelet}]
+                }
             };
-            console.log(this.state.purchase);
-            console.log(params);
-            let tx = invokeScript(params, this.state.purchase.seed);
-            this.updateValue("purchase", "tx.Id", tx.Id);
-            let res = broadcast(tx, this.baseUri);
-            res.then((v) => this.updateValue("purchase", "txid", tx.id),
-                (e) => {console.log(e); this.updateValue("purchase", "txid", '')});
-        }
-    }
-*/
 
-purchase(){
-    if(window.confirm("Do you want investment in GreenProjects?")) {
-        const params = {
-                type: 16,
-            data: {
-                fee: {
-                    "tokens": "0.05",
-                    "assetId": "WAVES"
-                },
-                dApp: '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4',
-                call: {
-                        function: 'purchase',
-                        args: [
-                            {type:"string", value:this.state.purchase.item},
-                            {type:"string", value:this.state.purchase.projectName},
-                            {type:"string", value:this.state.purchase.userData},
-                            {type:"integer", value:this.state.purchase.userDiscount},
-                            {type:"integer", value:this.state.purchase.orderQty},
-                            {type:"integer", value:this.state.purchase.amount*this.wavelet}
-                        ]
-                    }, payment: [{assetId: "WAVES", amount:this.state.purchase.amount*this.wavelet}]
-            }
+                window.WavesKeeper.signAndPublishTransaction(params)
+                .then(data => {
+                    console.log("Ура! Я выполнил скрипт!!!");
+            }).catch((error) => {
+                    console.error("Что-то пошло не так", error);
+            });     
         };
-        //console.log(this.state.purchase);
-        //console.log(params);
-        window.WavesKeeper.signAndPublishTransaction(params)
-        .then(data => {
-            console.log("Ура! Я выполнил скрипт!!!");
-       }).catch((error) => {
-            console.error("Что-то пошло не так", error);
-       }); 
-        //    {
-        //let tx = invokeScript(params, this.state.purchase.seed);
-        //this.updateValue("purchase", "tx.Id", tx.Id);
-        //let res = broadcast(tx, this.baseUri);
-        //res.then((v) => this.updateValue("purchase", "txid", tx.id),
-        //    (e) => {console.log(e); this.updateValue("purchase", "txid", '')});
-    }
-}
+    };
        
     render() {
-        return (
-/*            <div className="container">
-                <div className="deposit form-group">
-                <br></br>
-                <label><h5>[ Token's Purchase ] Payment via Waves BlockChain</h5></label>
-                <input className="form-control" type="text" placeholder="Enter your Seed or Waves secret phrase" onChange={(e) => this.updateValue("deposit", "seed", e.target.value)}/>
-                <label></label>
-                <input className="form-control" type="number" step="0.01" min="5" max="5000" placeholder="Please, enter the Total Amount to Pay (in WAVES)" onChange={(e) => this.updateValue("deposit", "amount", e.target.value)}/>
-                <br></br>
-                <input className="btn btn-primary" type="submit" value="Buy tokens" onClick={this.deposit}/>
-                <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.deposit.txid}>Transaction: {this.state.deposit.txid}</a>
-                <br/>
-                </div>
-*/
-
+        return(
             <div className="container">
-                <div className="purchase form-group">
-
-                    
-                    <label><h5>[ projectName ]</h5></label>
+                <div className="purchase form-group">                   
+                    <label><h5>[projectName]</h5></label>
                     <input className="form-control" type="text" placeholder="Project Name" onChange={(e) => this.updateValue("purchase", "projectName", e.target.value)}/>
-                    <label><h5>[ userData ]</h5></label>
+                    <br></br>
+                    <label><h5>[userData]</h5></label>
                     <input className="form-control" type="text" placeholder="User Data" onChange={(e) => this.updateValue("purchase", "userData", e.target.value)}/>
-
-                    <label><h5>[ userDiscount ]</h5></label>
+                    <br></br>
+                    <label><h5>[userDiscount]</h5></label>
                     <input className="form-control" type="number" step="0.5" min="0" max="12" placeholder="Discount" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
                     <br></br>
-                    <label><h5>[ orderQty ]</h5></label>
+                    <label><h5>[orderQty]</h5></label>
                     <input className="form-control" type="number" step="1" min="1" max="1000" placeholder="Order Qty" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
-                    <br></br>
-                    
-                    <label><h5>[ amount ]</h5></label>
+                    <br></br>                  
+                    <label><h5>[amount]</h5></label>
                     <input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
                     <br></br>
-
-                    <label><h5>[ Payment ]</h5></label>
+                    <label><h5>[Payment]</h5></label>
                     <input className="btn btn-primary" type="submit" value="Buy aBitCO2 tokens" onClick={this.purchase}/>
                     <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
-                    <br/>
-                    
+                    <br></br>                    
                 </div>
-                    <div className='container'>
-                        <input className="btn btn-primary" type="submit" value="Auth" onClick={this.authFunc}/>
-                    </div>
-
+                <div className="container">
+                <input className="btn btn-primary" type="submit" value="Auth" onClick={this.authFunc}/></div>
             </div>
         )
     }
-}
-
-//                    <label><h5>[ item ]</h5></label>
-//                    <input className="form-control" type="text" placeholder="Item" onChange={(e) => this.updateValue("purchase", "item", e.target.value)}/>
-
-
-//                    <label><h5>[ amount ]</h5></label>
-//                    <input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
-//                    <br></br>
-
-
+};
 
 const app = document.getElementById('app');
 if(app){
