@@ -101,7 +101,7 @@ purchase(){
                             {type:"integer", value:this.state.purchase.orderQty},
                             {type:"integer", value:this.state.purchase.amount*this.wavelet}
                         ]
-                    }, payment: [{amount:this.state.purchase.amount*this.wavelet, asset:null}]
+                    }, payment: []
             }
         };
         //console.log(this.state.purchase);
