@@ -70,7 +70,8 @@ class App extends React.Component {
                                 {type:"string", value:this.state.purchase.userData},
                                 {type:"integer", value:this.state.purchase.userDiscount},
                                 {type:"integer", value:this.state.purchase.orderQty},
-                                {type:"integer", value:this.state.purchase.amount*this.wavelet}
+                                //{type:"integer", value:this.state.purchase.amount*this.wavelet}
+                                {type:"integer", value:(100-this.state.purchase.userDiscount)*this.state.purchase.orderQty*10*this.wavelet/100}
                             ]
                         }, payment: [{assetId: "WAVES", amount:this.state.purchase.amount*this.wavelet}]
                 }
@@ -79,7 +80,7 @@ class App extends React.Component {
                 window.WavesKeeper.signAndPublishTransaction(params)
                 .then(data => {
                     console.log("Ура! Я выполнил скрипт!!!");
-                    window.confirm("Gracias por su inversion en nuestro GreenProject!");
+                    //confirm("Gracias por su inversion en nuestro GreenProject!");
             }).catch((error) => {
                     console.error("Что-то пошло не так", error);
             });     
@@ -117,6 +118,9 @@ class App extends React.Component {
     }
 };
  
+//<br></br>                  
+//<input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
+
 const app = document.getElementById('app');
 if(app){
     ReactDOM.render(<App/>, app);
