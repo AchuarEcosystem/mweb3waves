@@ -106,6 +106,7 @@ class App extends React.Component {
                         <br></br>                  
                         <input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
                         <br></br>
+                        <p><strong>Total Amount to Pay</strong>: ${this.updateValue("purchase", "amount", e.target.value)} euros</p>
                         <input className="btn btn-primary" type="submit" value="Buy aBitCO2 tokens" onClick={this.purchase}/>
                         <br></br>
                         <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
