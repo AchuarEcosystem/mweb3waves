@@ -37,7 +37,6 @@ class App extends React.Component {
         );
     }
 
-    /*
     authFunc(){
         const authData = {data: "Auth on my site"};
         if(window.WavesKeeper){
@@ -52,7 +51,6 @@ class App extends React.Component {
             alert("Please, utilize WavesKeeper")
         };
     };
-    */
     
     purchase() {
         if(window.confirm("Do you want investment in GreenProjects?")) {
@@ -81,7 +79,7 @@ class App extends React.Component {
                 window.WavesKeeper.signAndPublishTransaction(params)
                 .then(data => {
                     console.log("Ура! Я выполнил скрипт!!!");
-                    //alert("Felicitaciones y Gracias por su Inversion!")
+                    window.confirm("Gracias por su inversion en nuestro GreenProject!");
             }).catch((error) => {
                     console.error("Что-то пошло не так", error);
             });     
