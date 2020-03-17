@@ -105,11 +105,11 @@ class App extends React.Component {
                         <input className="form-control" type="number" step="1" min="1" max="1000" placeholder="Order Qty" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
                         <br></br>                  
                         <input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
-                        <br></br>
-                        <p><strong>Total Amount to Pay</strong>: ${this.updateValue("purchase", "amount", e.target.value)} euros</p>
+                        <br></br> 
+                        
                         <input className="btn btn-primary" type="submit" value="Buy aBitCO2 tokens" onClick={this.purchase}/>
                         <br></br>
-                        <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
+                        <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {(100-this.state.purchase.userDiscount)*this.state.purchase.orderQty*10*this.wavelet/100}}</a>
                         <br></br>
                         </div>                                                      
                     </div>            
@@ -118,7 +118,9 @@ class App extends React.Component {
         )
     }
 };
- 
+
+//<a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
+ //<p><strong>Total Amount to Pay</strong>:{this.updateValue("purchase", "amount", e.target.value)} euros</p>
 //<br></br>                  
 //<input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
 
