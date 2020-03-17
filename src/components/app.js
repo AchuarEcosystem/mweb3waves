@@ -81,7 +81,7 @@ class App extends React.Component {
                 window.WavesKeeper.signAndPublishTransaction(params)
                 .then(data => {
                     console.log("Ура! Я выполнил скрипт!!!");
-                    alert("Felicitaciones y Gracias por su Inversion!")
+                    //alert("Felicitaciones y Gracias por su Inversion!")
             }).catch((error) => {
                     console.error("Что-то пошло не так", error);
             });     
