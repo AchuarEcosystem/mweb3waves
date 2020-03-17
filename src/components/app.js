@@ -106,10 +106,9 @@ class App extends React.Component {
                         <br></br>                  
                         <input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
                         <br></br> 
-                        
-                        <input className="btn btn-primary" type="submit" value="Buy aBitCO2 tokens" onClick={this.purchase}/>
+                        <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.dataid}>Transaction: {(100-this.state.purchase.userDiscount)*this.state.purchase.orderQty*10*this.wavelet/100}</a>
                         <br></br>
-                        <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {(100-this.state.purchase.userDiscount)*this.state.purchase.orderQty*10*this.wavelet/100}}</a>
+                        <input className="btn btn-primary" type="submit" value="Buy aBitCO2 tokens" onClick={this.purchase}/>
                         <br></br>
                         </div>                                                      
                     </div>            
