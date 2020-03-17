@@ -22,7 +22,7 @@ class App extends React.Component {
         this.wavelet = 100000000;
         this.dApp = '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4';
         //this.explorerUrl = "https://wavesexplorer.com/testnet";
-        this.explorerUrl = "https://testnet.wavesexplorer.com/";
+        this.explorerUrl = "https://testnet.wavesexplorer.com";
         this.purchase = this.purchase.bind(this);
         this.updateValue = this.updateValue.bind(this);
     }
@@ -109,8 +109,7 @@ class App extends React.Component {
                         <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
                         <br></br>
                         </div>                                                      
-                    </div>
-                    
+                    </div>            
                 </div>
             </div>
         )
