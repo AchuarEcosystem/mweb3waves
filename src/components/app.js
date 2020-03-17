@@ -73,7 +73,8 @@ class App extends React.Component {
                                 //{type:"integer", value:this.state.purchase.amount*this.wavelet}
                                 {type:"integer", value:(100-this.state.purchase.userDiscount)*this.state.purchase.orderQty*1*this.wavelet/100}
                             ]
-                        }, payment: [{assetId: "WAVES", amount:this.state.purchase.amount*this.wavelet}]
+                        //}, payment: [{assetId: "WAVES", amount:this.state.purchase.amount*this.wavelet}]
+                    }, payment: [{assetId: "WAVES", amount:(100-this.state.purchase.userDiscount)*this.state.purchase.orderQty*1*this.wavelet/100}]
                 }
             };
 
@@ -103,8 +104,7 @@ class App extends React.Component {
                         <input className="form-control" type="number" step="0.5" min="0" max="12" placeholder="Discount" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
                         <br></br>
                         <input className="form-control" type="number" step="1" min="1" max="1000" placeholder="Order Qty" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
-                        <br></br>                  
-                        <input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
+                       
                         <br></br> 
                         <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {(100-this.state.purchase.userDiscount)*this.state.purchase.orderQty*1*this.wavelet/100}</a>
                         <br></br>
