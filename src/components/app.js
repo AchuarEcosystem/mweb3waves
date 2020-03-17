@@ -7,7 +7,6 @@ class App extends React.Component {
         super(props);
         this.state = {
             purchase: {
-                //seed: '',
                 item: '',
                 projectName: '',
                 userData: '',
@@ -21,7 +20,8 @@ class App extends React.Component {
         this.baseUri = "https://testnodes.wavesnodes.com";
         this.wavelet = 100000000;
         this.dApp = '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4';
-        this.explorerUrl = "https://wavesexplorer.com/testnet";
+        //this.explorerUrl = "https://wavesexplorer.com/testnet";
+        this.explorerUrl = "https://testnet.wavesexplorer.com";
         this.purchase = this.purchase.bind(this);
         this.updateValue = this.updateValue.bind(this);
     }
@@ -87,27 +87,30 @@ class App extends React.Component {
     render() {
         return(
             <div className="container">
-                <div className="purchase form-group">                   
-                    <label><h5>[projectName]</h5></label>
-                    <input className="form-control" type="text" placeholder="Project Name" onChange={(e) => this.updateValue("purchase", "projectName", e.target.value)}/>
-                    <br></br>
-                    <label><h5>[userData]</h5></label>
-                    <input className="form-control" type="text" placeholder="User Data" onChange={(e) => this.updateValue("purchase", "userData", e.target.value)}/>
-                    <br></br>
-                    <label><h5>[userDiscount]</h5></label>
-                    <input className="form-control" type="number" step="0.5" min="0" max="12" placeholder="Discount" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
-                    <br></br>
-                    <label><h5>[orderQty]</h5></label>
-                    <input className="form-control" type="number" step="1" min="1" max="1000" placeholder="Order Qty" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
-                    <br></br>                  
-                    <label><h5>[amount]</h5></label>
-                    <input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
-                    <br></br>
-                    <label><h5>[Payment]</h5></label>
-                    <input className="btn btn-primary" type="submit" value="Buy aBitCO2 tokens" onClick={this.purchase}/>
-                    <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
-                    <br></br>                    
+                <div className="card text-left mb-4">
+                    <div className="card-header">
+                        <h5>Purchase Order</h5>
+                    </div>
+                    <div className="purchase form-group">                   
+                        <div className="card-body">
+                            <input className="form-control" type="text" placeholder="Project Name" onChange={(e) => this.updateValue("purchase", "projectName", e.target.value)}/>
+                            <br></br>
+                            <input className="form-control" type="text" placeholder="User Data" onChange={(e) => this.updateValue("purchase", "userData", e.target.value)}/>
+                            <br></br>
+                            <input className="form-control" type="number" step="0.5" min="0" max="12" placeholder="Discount" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
+                            <br></br>
+                            <input className="form-control" type="number" step="1" min="1" max="1000" placeholder="Order Qty" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
+                            <br></br>
+                            <input className="form-control" type="number" step="0.01" placeholder="Amount" onChange={(e) => this.updateValue("purchase", "amount", e.target.value)}/>
+                            <br></br>
+                            <input className="btn btn-primary" type="submit" value="Buy aBitCO2 tokens" onClick={this.purchase}/>
+                            <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
+                            <br></br>
+                        </div>
+                                            
+                    </div>
                 </div>
+                
                 <div className="container">
                 <input className="btn btn-primary" type="submit" value="Auth" onClick={this.authFunc}/></div>
             </div>
@@ -120,6 +123,7 @@ if(app){
     ReactDOM.render(<App/>, app);
 }
 
+/*
 // Product Constructor
 class Product {
     constructor(name, email, nomprice, discount, discprice, investment, total) {
@@ -250,3 +254,4 @@ document.getElementById('product-list')
         ui.deleteProduct(e.target);
         e.preventDefault();
     });
+*/
