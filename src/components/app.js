@@ -72,7 +72,7 @@ class App extends React.Component {
                                 {type:"integer", value:this.state.purchase.orderQty},
                                 //{type:"integer", value:((100-this.state.purchase.userDiscount)*(this.nomPrice)*(this.wavelet))}
                             ]
-                        }, payment: [{assetId: "WAVES", amount:((100-this.state.purchase.userDiscount)*(this.state.purchase.orderQty)*(this.nomPrice)*this.wavelet)/100}]
+                        }, payment: [{assetId: "WAVES", amount:(((100-this.state.purchase.userDiscount)*(this.state.purchase.orderQty)*(this.nomPrice)*(this.wavelet))/100)}]
                 }
             };
 
