@@ -12,7 +12,6 @@ class App extends React.Component {
                 userData: '',
                 userDiscount: '',
                 orderQty: '',
-                //amount: '',
                 txid: ''
               }
         };
@@ -70,7 +69,6 @@ class App extends React.Component {
                                 {type:"string", value:this.state.purchase.userData},
                                 {type:"integer", value:this.state.purchase.userDiscount},
                                 {type:"integer", value:this.state.purchase.orderQty},
-                                //{type:"integer", value:((100-this.state.purchase.userDiscount)*(this.nomPrice)*(this.wavelet))}
                             ]
                         }, payment: [{assetId: "WAVES", amount:(((100-this.state.purchase.userDiscount)*(this.state.purchase.orderQty)*(this.nomPrice)*(this.wavelet))/100)}]
                 }
@@ -98,15 +96,18 @@ class App extends React.Component {
                             <br></br>
                             <input className="form-control" type="text" placeholder="User Data" onChange={(e) => this.updateValue("purchase", "userData", e.target.value)}/>
                             <br></br>
-                            <input className="form-control" type="number" step="0,5" min="0" max="12" placeholder="Discount" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
+                            <input className="form-control" type="number" step="1" min="0" max="12" placeholder="Discount" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
                             <br></br>
                             <input className="form-control" type="number" step="1" min="1" max="1000" placeholder="Order Qty" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
                             <br></br>
-                            <a className="form-text text-muted" target="_blank" href={this.state.purchase.txid}>Precio de 1 Token (max 12% de dscto): {((100-this.state.purchase.userDiscount)*(this.nomPrice))/100} waves</a>
+                            <a className="form-text text-muted">Precio de 1 Token (max 12% de dscto): {((100-this.state.purchase.userDiscount)*(this.nomPrice))/100} waves</a>
                             <br></br>    
                             <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction / Suma a Invertir: {((100-this.state.purchase.userDiscount)*(this.state.purchase.orderQty)*(this.nomPrice))/100} waves</a>
+                            
                             <br></br>
                             <input className="btn btn-primary" type="submit" value="Buy aBitCO2 tokens" onClick={this.purchase}/>
+                            <br></br><br></br>  
+                            <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
                         </div>                        
                     </div>
                 </div>
@@ -115,13 +116,9 @@ class App extends React.Component {
     }
 };
 
+//<a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction / Suma a Invertir: {((100-this.state.purchase.userDiscount)*(this.state.purchase.orderQty)*(this.nomPrice))/100} waves</a>
 
 const app = document.getElementById('app');
 if(app){
     ReactDOM.render(<App/>, app);
 }
-
-
-
-
-
