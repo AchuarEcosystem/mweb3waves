@@ -98,11 +98,11 @@ class App extends React.Component {
                             <br></br>
                             <input className="form-control" type="text" placeholder="User Data" onChange={(e) => this.updateValue("purchase", "userData", e.target.value)}/>
                             <br></br>
-                            <input className="form-control" type="number" step="0.5" min="0" max="12" placeholder="Discount" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
+                            <input className="form-control" type="number" step="0,5" min="0" max="12" placeholder="Discount" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
                             <br></br>
                             <input className="form-control" type="number" step="1" min="1" max="1000" placeholder="Order Qty" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
                             <br></br>
-                            <a className="form-text text-muted" target="_blank" href={this.state.purchase.txid}>Precio de 1 Token con descuento: {((100-this.state.purchase.userDiscount)*(this.nomPrice))/100} waves</a>
+                            <a className="form-text text-muted" target="_blank" href={this.state.purchase.txid}>Precio de 1 Token (max 12% de dscto): {((100-this.state.purchase.userDiscount)*(this.nomPrice))/100} waves</a>
                             <br></br>    
                             <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction / Suma a Invertir: {((100-this.state.purchase.userDiscount)*(this.state.purchase.orderQty)*(this.nomPrice))/100} waves</a>
                             <br></br>
