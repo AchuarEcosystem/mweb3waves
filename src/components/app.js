@@ -12,7 +12,7 @@ class App extends React.Component {
                 userData: '',
                 userDiscount: '',
                 orderQty: '',
-                amount: '',
+                //amount: '',
                 txid: ''
               }
         };
