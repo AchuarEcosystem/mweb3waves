@@ -5,7 +5,7 @@ module.exports = {
 		'./src/main.js'
 	],
 	output: {
-		filename: 'build.js' //npm run build:dev
+		filename: 'build.js' //comenzar con: npm run build:dev y //npm run start
 	},
 	module: {
 		rules: [

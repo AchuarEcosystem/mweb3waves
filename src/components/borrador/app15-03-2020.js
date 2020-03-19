@@ -241,7 +241,7 @@ class UI {
                                 <a href = "#" class = "alert-link">
                                 <font> Legal Notice </font>
                                 </a>
-                                .</i> <br>
+                                .</i> <br></br>
                         </div>
                         <div class="card">
                             <div class="card-body">
