@@ -26,6 +26,32 @@ class App extends React.Component {
         this.updateValue = this.updateValue.bind(this);
     }
 
+    /*
+    componentWillMount() {
+        fetch(`/api/bloggers`)
+          .then(res => res.json())
+          .then(body => {
+            this.setState({ bloggersList: body.items });
+          });
+    
+        fetch(`/api/votes`)
+          .then(res => res.json())
+          .then(body => {
+            const votes = body.reduce(function(acc, item) {
+              if (acc[item.value]) {
+                acc[item.value] += 1;
+              } else {
+                acc[item.value] = 1;
+              }
+    
+              return acc;
+            }, {});
+            this.setState({ votes });
+          });
+      }
+    */
+
+
     updateValue(scope, key, value){
         const newState = this.state[scope];
         newState[key] = value;
@@ -77,8 +103,8 @@ class App extends React.Component {
                 window.WavesKeeper.signAndPublishTransaction(params)
                 .then(data => {
                     console.log("Ура! Я выполнил скрипт!!!");
-                    alert('Muchas Gracias, su compra ha sido confirmada!');
-                    res.render(<a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>);
+                    alert('Muchas Gracias, su compra de ' + this.state.purchase.orderQty + ' token ha sido confirmada!');
+                    //res.render('Su compra ha sido confirmada, Gracias!');
             }).catch((error) => {
                     console.error("Что-то пошло не так", error);
             });     
