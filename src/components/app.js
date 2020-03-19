@@ -103,7 +103,7 @@ class App extends React.Component {
                 window.WavesKeeper.signAndPublishTransaction(params)
                 .then(data => {
                     console.log("Ура! Я выполнил скрипт!!!");
-                    alert('Muchas Gracias, su compra de ' + this.state.purchase.orderQty + ' token ha sido confirmada!');
+                    alert('Muchas Gracias, su Transaccion de ' + this.state.purchase.orderQty + ' tokens ha sido confirmada!');
                     //res.render('Su compra ha sido confirmada, Gracias!');
             }).catch((error) => {
                     console.error("Что-то пошло не так", error);
@@ -149,10 +149,8 @@ class App extends React.Component {
                             <br></br>    
                             <span className="form-text text-muted">Investment amount : {((100-this.state.purchase.userDiscount)*(this.state.purchase.orderQty)*(this.nomPrice))/100} waves</span>                        
                             <br></br>
-                            <input className="btn btn-primary" type="submit" value="Buy / Invest" onClick={this.purchase}/>
-                            <br></br><br></br>  
-                            <a className="form-text text-muted" target="_blank" href={this.explorerUrl + "/tx/" + this.state.purchase.txid}>Transaction: {this.state.purchase.txid}</a>
-                            <br></br>  
+                            <input className="btn btn-primary" type="submit" value="Invest / Buy tokens" onClick={this.purchase}/>
+                            <br></br>
                         </div>                        
                     </div>
                 </div>
