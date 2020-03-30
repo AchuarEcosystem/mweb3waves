@@ -101,9 +101,9 @@ class App extends React.Component {
             };
 
                 window.WavesKeeper.signAndPublishTransaction(params)
-                .then(data => {
+                .then((data) => {
                     console.log("Ура! Я выполнил скрипт!!!");
-                    alert('Muchas Gracias, su Transaccion de ' + this.state.purchase.orderQty + ' tokens ha sido confirmada!');
+                    //alert('Muchas Gracias, su Transaccion de ' + this.state.purchase.orderQty + ' tokens ha sido confirmada!');
                     //res.render('Su compra ha sido confirmada, Gracias!');
             }).catch((error) => {
                     console.error("Что-то пошло не так", error);
