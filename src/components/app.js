@@ -94,7 +94,7 @@ class App extends React.Component {
                                 {type:"string", value:this.state.purchase.projectName},
                                 {type:"string", value:this.state.purchase.userData},
                                 {type:"integer", value:this.state.purchase.userDiscount},
-                                {type:"integer", value:this.state.purchase.orderQty},
+                                {type:"integer", value:this.state.purchase.orderQty}
                             ]
                         }, payment: [{assetId: "WAVES", amount:(((100-this.state.purchase.userDiscount)*(this.state.purchase.orderQty)*(this.nomPrice)*(this.wavelet))/100)}]
                 }
@@ -143,7 +143,7 @@ class App extends React.Component {
                             <input className="form-control" type="number" step="1" min="0" max="12" placeholder="Enter your discount, (max. 12%) :" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
                             <br></br>
                             <span className="form-text text-muted">Tokens request, quantity :</span>
-                            <input className="form-control" type="number" step="1" min="5" max="1000" placeholder="Your order / tokens qty, units :" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
+                            <input className="form-control" type="number" step="1" min="1" max="1000" placeholder="Your order / tokens qty, units :" onChange={(e) => this.updateValue("purchase", "orderQty", e.target.value)}/>
                             <br></br>
                             <span className="form-text text-muted">Price, 1 token : {((100-this.state.purchase.userDiscount)*(this.nomPrice))/100} waves</span>
                             <br></br>    
