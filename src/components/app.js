@@ -21,36 +21,9 @@ class App extends React.Component {
         this.wavelet = 100000000;
         this.dApp = '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4';
         this.explorerUrl = "https://wavesexplorer.com/testnet";
-        //this.explorerUrl = "https://testnet.wavesexplorer.com";
         this.purchase = this.purchase.bind(this);
         this.updateValue = this.updateValue.bind(this);
     }
-
-    /*
-    componentWillMount() {
-        fetch(`/api/bloggers`)
-          .then(res => res.json())
-          .then(body => {
-            this.setState({ bloggersList: body.items });
-          });
-    
-        fetch(`/api/votes`)
-          .then(res => res.json())
-          .then(body => {
-            const votes = body.reduce(function(acc, item) {
-              if (acc[item.value]) {
-                acc[item.value] += 1;
-              } else {
-                acc[item.value] = 1;
-              }
-    
-              return acc;
-            }, {});
-            this.setState({ votes });
-          });
-      }
-    */
-
 
     updateValue(scope, key, value){
         const newState = this.state[scope];
@@ -104,6 +77,8 @@ class App extends React.Component {
                 .then(data => {
                     console.log("Ура! Я выполнил скрипт!!!");
                     alert('Muchas Gracias! Transaccion de ' + this.state.purchase.orderQty + ' tokens confirmada!');
+                    //document.getSelection('this.state.purchase').reset();
+                    //e.preventDefault();
                     //res.render('Su compra ha sido confirmada, Gracias!');
             }).catch((error) => {
                     console.error("Что-то пошло не так", error);
@@ -154,6 +129,8 @@ class App extends React.Component {
                         </div>                        
                     </div>
                 </div>
+    
+    
             </div>
         )
     }
