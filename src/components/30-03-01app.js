@@ -51,7 +51,6 @@ class App extends React.Component {
       }
     */
 
-
     updateValue(scope, key, value){
         const newState = this.state[scope];
         newState[key] = value;

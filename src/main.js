@@ -20,6 +20,7 @@ export default class Posts extends Component {
     } 
 */   
 
+/* cierro 30-03
 window.wc = {
     "stringToUint8Array": stringToUint8Array,
     "sha256": sha256,
@@ -31,6 +32,8 @@ window.wt = {
     "broadcast": broadcast,
     "waitForTx": waitForTx
 };
+*/
+
 
 /*
 let key = 'Offered_Qty, balance:';
@@ -75,6 +78,7 @@ function ShowData(jsonArray, idTable) {
 }
 */
 
+/*
 //desconecto 23-03-2020 con esto cargo todos los JSONs:
 let dappaddress = '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4';  // seller-01
 //let dappaddress = '3N9GKCsktAL7oPFmaKsgPBoDfu3ijk23Vmm'; // seller-02
@@ -89,6 +93,7 @@ nodeInteraction.accountData(dappaddress, baseUri).then((v) => {
     }
 });
 //
+*/
 
 
 
