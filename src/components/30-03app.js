@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import React from 'react';
-import { invokeScript, broadcast } from '@waves/waves-transactions'
+import { invokeScript, broadcast } from '@waves/waves-transactions';
 
 class App extends React.Component {
     constructor(props) {
@@ -8,8 +8,8 @@ class App extends React.Component {
         this.state = {
             purchase: {
                 item: '',
-                projectName: '',
-                userData: '',
+                userName: '',
+                userCountry: '',
                 userDiscount: '',
                 orderQty: '',
                 txid: ''
@@ -21,35 +21,9 @@ class App extends React.Component {
         this.wavelet = 100000000;
         this.dApp = '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4';
         this.explorerUrl = "https://wavesexplorer.com/testnet";
-        //this.explorerUrl = "https://testnet.wavesexplorer.com";
         this.purchase = this.purchase.bind(this);
         this.updateValue = this.updateValue.bind(this);
     }
-
-    /*
-    componentWillMount() {
-        fetch(`/api/bloggers`)
-          .then(res => res.json())
-          .then(body => {
-            this.setState({ bloggersList: body.items });
-          });
-    
-        fetch(`/api/votes`)
-          .then(res => res.json())
-          .then(body => {
-            const votes = body.reduce(function(acc, item) {
-              if (acc[item.value]) {
-                acc[item.value] += 1;
-              } else {
-                acc[item.value] = 1;
-              }
-    
-              return acc;
-            }, {});
-            this.setState({ votes });
-          });
-      }
-    */
 
     updateValue(scope, key, value){
         const newState = this.state[scope];
@@ -90,8 +64,8 @@ class App extends React.Component {
                             function: 'purchase',
                             args: [
                                 {type:"string", value:this.state.purchase.item},
-                                {type:"string", value:this.state.purchase.projectName},
-                                {type:"string", value:this.state.purchase.userData},
+                                {type:"string", value:this.state.purchase.userName},
+                                {type:"string", value:this.state.purchase.userCountry},
                                 {type:"integer", value:this.state.purchase.userDiscount},
                                 {type:"integer", value:this.state.purchase.orderQty},
                             ]
@@ -102,7 +76,9 @@ class App extends React.Component {
                 window.WavesKeeper.signAndPublishTransaction(params)
                 .then(data => {
                     console.log("Ура! Я выполнил скрипт!!!");
-                    alert('Muchas Gracias, su Transaccion de ' + this.state.purchase.orderQty + ' tokens ha sido confirmada!');
+                    alert('Muchas Gracias! Transaccion de ' + this.state.purchase.orderQty + ' tokens confirmada!');
+                    //document.getSelection('this.state.purchase').reset();
+                    //e.preventDefault();
                     //res.render('Su compra ha sido confirmada, Gracias!');
             }).catch((error) => {
                     console.error("Что-то пошло не так", error);
@@ -134,9 +110,9 @@ class App extends React.Component {
                             <br></br>
                             <span className="form-control" type="text">Project :    Achuar Amazonian Reserve - Ecuador</span>
                             <br></br>
-                            <input className="form-control" type="text" placeholder="Your Name :" onChange={(e) => this.updateValue("purchase", "projectName", e.target.value)}/>
+                            <input className="form-control" type="text" placeholder="Your Name :" onChange={(e) => this.updateValue("purchase", "userName", e.target.value)}/>
                             <br></br>
-                            <input className="form-control" type="text" placeholder="Your Country :" onChange={(e) => this.updateValue("purchase", "userData", e.target.value)}/>
+                            <input className="form-control" type="text" placeholder="Your Country :" onChange={(e) => this.updateValue("purchase", "userCountry", e.target.value)}/>
                             <br></br>
                             <span className="form-text text-muted">Discount :</span>
                             <input className="form-control" type="number" step="1" min="0" max="12" placeholder="Enter your discount, (max. 12%) :" onChange={(e) => this.updateValue("purchase", "userDiscount", e.target.value)}/>
@@ -153,6 +129,8 @@ class App extends React.Component {
                         </div>                        
                     </div>
                 </div>
+    
+    
             </div>
         )
     }
