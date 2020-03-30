@@ -16,23 +16,23 @@ window.wt = {
     "waitForTx": waitForTx
 };
 
-let key = 'Offered_Qty, balance:';
+//let key = 'Offered_Qty, balance:';
 let dappaddress = '3N8RGScPyKYySaXd5Z3VcpnttH2uBeMpSy4';  // seller-01
 //let dappaddress = '3N9GKCsktAL7oPFmaKsgPBoDfu3ijk23Vmm'; // seller-02
 let baseUri = 'https://testnodes.wavesnodes.com';
-//nodeInteraction.accountData(dappaddress, baseUri).then((v) => {
-nodeInteraction.accountDataByKey(key, dappaddress, baseUri).then((v) => {
+nodeInteraction.accountData(dappaddress, baseUri).then((v) => {
+//nodeInteraction.accountDataByKey(key, dappaddress, baseUri).then((v) => {
     window.dAppData = v;
     if (v) {
         window.dAppDataKeys = Object.keys(v);
-        console.log("dApp Account data son:");
+        console.log("dApp Account datos son:");
         console.log(v);
         console.log(JSON.stringify(v));
     }
 });
 
-console.log(ReactDOM);
-console.log(React);
+//console.log(ReactDOM);
+//console.log(React);
 console.log(invokeScript);
 console.log(broadcast);
 
