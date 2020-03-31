@@ -62,10 +62,10 @@ class App extends React.Component {
         );
     }
 
-    authFunc(){
+    async authFunc(){
         const authData = {data: "Auth on my site"};
         if(window.WavesKeeper){
-            window.WavesKeeper.auth(authData)
+            await window.WavesKeeper.auth(authData)
             .then(auth =>{
                 console.log(auth); 
             })
@@ -76,6 +76,7 @@ class App extends React.Component {
             alert("Please, utilize WavesKeeper")
         };
     };
+    
     
     purchase() {
         if(window.confirm("Do you want investment in GreenProjects?")) {
