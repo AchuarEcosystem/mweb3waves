@@ -12,7 +12,7 @@
         "@waves/waves-crypto": "^2.0.4",
         "@waves/waves-transactions": "^3.3.11",
         "@waves/waveskeeper-types": "0.0.6",
-        "axios": "^0.18.0",
+        "axios": "^1.8.2",
         "babel": "^6.23.0",
         "babel-core": "^6.26.3",
         "babel-loader": "^8.1.0",
